@@ -1,24 +1,38 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
+import "@fortawesome/fontawesome-free/css/all.min.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import DashbaordSecureSense from "./Dashboard";
+import AirMonitoringSecureSense from "./Airmonitoring";
+import AboutSecureSense from "./About";
+import ContactSecureSense from "./Contact";
+import GetData from "./api/Getdata";
+import ResultData from "./api/Resultdata";
+import { DataProvider } from "./api/DataContext";
+import { ResultProvider } from "./api/ResultContext";
+import "./App.css";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <DataProvider>
+      <ResultProvider>
+        <Router>
+          <div style={{ display: "none" }}>
+            <GetData />
+          </div>
+          <Routes>
+            <Route path="/" element={<DashbaordSecureSense />} />
+            <Route
+              path="/airmonitoring"
+              element={<AirMonitoringSecureSense />}
+            />
+            <Route path="/about" element={<AboutSecureSense />} />
+            <Route path="/contact" element={<ContactSecureSense />} />
+            <Route path="/resultdata" element={<ResultData />} />
+            <Route path="/getdata" element={<GetData />} />
+          </Routes>
+        </Router>
+      </ResultProvider>
+    </DataProvider>
   );
 }
 
