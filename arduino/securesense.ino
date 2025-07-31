@@ -10,7 +10,7 @@
 #define FIREBASE_AUTH "Gw3cKkWObyN8ms86rSjhJ2UZqdfy7UodAUfihPd4"
 
 // Sensor & Buzzer
-#define DHTPIN 4         // D4
+#define DHTPIN 4         // D2
 #define BUZZERPIN 5      // D1
 #define DHTTYPE DHT22
 
